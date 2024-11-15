@@ -1,0 +1,169 @@
+
+firmware.elf:     file format elf32-xtensa-le
+
+
+Disassembly of section .text:
+
+40080400 <_eram+0x80400>:
+40080400:	f480a4        	lsi	f10, a0, 0x3d0
+40080403:	3f          	.byte	0x3f
+40080404:	d83aa1        	l32r	a10, 400764ec <_eram+0x764ec>
+40080407:	80a050        	add	a10, a0, a5
+4008040a:	003ff4        	lsi	f15, a15, 0
+4008040d:	800000        	add	a0, a0, a0
+40080410:	808c      	beqz.n	a0, 4008041c <_eram+0x8041c>
+40080412:	483ff4        	mula.da.ll.ldinc	m3, a15, m0, a15
+40080415:	3ff5f0        	f64cmph	a15, a5, a15, 3
+40080418:	0048      	l32i.n	a4, a0, 0
+4008041a:	003ff6        	bgeui	a15, 3, 4008041e <_eram+0x8041e>
+4008041d:	3ff5f0        	f64cmph	a15, a5, a15, 3
+40080420:	f48070        	extui	a8, a7, 0, 16
+40080423:	3f          	.byte	0x3f
+40080424:	000000        	ill
+40080427:	3c08      	l32i.n	a0, a12, 12
+40080429:	3ff000        	f64cmph	a15, a0, a0, 3
+4008042c:	f40014        	lsi	f1, a0, 0x3d0
+4008042f:	3f          	.byte	0x3f
+40080430:	4001e0        	lsi	f14, a1, 0x100
+	...
+
+40080434 <soc_init>:
+40080434:	004136        	entry	a1, 32
+40080437:	fff281        	l32r	a8, 40080400 <_eram+0x80400> (3ff480a4 <s_brk-0x67f5c>)
+4008043a:	fff291        	l32r	a9, 40080404 <_eram+0x80404> (50d83aa1 <bubbleSort+0x10d03555>)
+4008043d:	0020c0        	memw
+40080440:	0899      	s32i.n	a9, a8, 0
+40080442:	fff191        	l32r	a9, 40080408 <_eram+0x80408> (3ff480a0 <s_brk-0x67f60>)
+40080445:	0020c0        	memw
+40080448:	0988      	l32i.n	a8, a9, 0
+4008044a:	fff0a1        	l32r	a10, 4008040c <_eram+0x8040c> (80000000 <bubbleSort+0x3ff7fab4>)
+4008044d:	2088a0        	or	a8, a8, a10
+40080450:	0020c0        	memw
+40080453:	0989      	s32i.n	a8, a9, 0
+40080455:	080c      	movi.n	a8, 0
+40080457:	ffee91        	l32r	a9, 40080410 <_eram+0x80410> (3ff4808c <s_brk-0x67f74>)
+4008045a:	0020c0        	memw
+4008045d:	0989      	s32i.n	a8, a9, 0
+4008045f:	ffed91        	l32r	a9, 40080414 <_eram+0x80414> (3ff5f048 <s_brk-0x50fb8>)
+40080462:	0020c0        	memw
+40080465:	0989      	s32i.n	a8, a9, 0
+40080467:	ffec91        	l32r	a9, 40080418 <_eram+0x80418> (3ff60048 <s_brk-0x4ffb8>)
+4008046a:	0020c0        	memw
+4008046d:	0989      	s32i.n	a8, a9, 0
+4008046f:	ffeb91        	l32r	a9, 4008041c <_eram+0x8041c> (3ff5f000 <s_brk-0x51000>)
+40080472:	0020c0        	memw
+40080475:	0988      	l32i.n	a8, a9, 0
+40080477:	2088a0        	or	a8, a8, a10
+4008047a:	0020c0        	memw
+4008047d:	0989      	s32i.n	a8, a9, 0
+4008047f:	ffe891        	l32r	a9, 40080420 <_eram+0x80420> (3ff48070 <s_brk-0x67f90>)
+40080482:	0020c0        	memw
+40080485:	0988      	l32i.n	a8, a9, 0
+40080487:	ffe7a1        	l32r	a10, 40080424 <_eram+0x80424> (8000000 <s_brk-0x37fb0000>)
+4008048a:	2088a0        	or	a8, a8, a10
+4008048d:	0020c0        	memw
+40080490:	0989      	s32i.n	a8, a9, 0
+40080492:	ffe591        	l32r	a9, 40080428 <_eram+0x80428> (3ff0003c <s_brk-0xaffc4>)
+40080495:	0020c0        	memw
+40080498:	0988      	l32i.n	a8, a9, 0
+4008049a:	2a0c      	movi.n	a10, 2
+4008049c:	2088a0        	or	a8, a8, a10
+4008049f:	0020c0        	memw
+400804a2:	0989      	s32i.n	a8, a9, 0
+400804a4:	ffe281        	l32r	a8, 4008042c <_eram+0x8042c> (3ff40014 <s_brk-0x6ffec>)
+400804a7:	ffe291        	l32r	a9, 40080430 <_eram+0x80430> (4001e0 <s_brk-0x3fbafe20>)
+400804aa:	0020c0        	memw
+400804ad:	0899      	s32i.n	a9, a8, 0
+400804af:	f01d      	retw.n
+400804b1:	000000        	ill
+400804b4:	fb0000        	f64addc	a0, a0, 0, 0
+400804b7:	3f          	.byte	0x3f
+400804b8:	fb0000        	f64addc	a0, a0, 0, 0
+400804bb:	3f          	.byte	0x3f
+400804bc:	0038      	l32i.n	a3, a0, 0
+400804be:	3ffb      	addi.n	a3, a15, 15
+400804c0:	0008      	l32i.n	a0, a0, 0
+400804c2:	3ffb      	addi.n	a3, a15, 15
+400804c4:	fb0004        	lsi	f0, a0, 0x3ec
+400804c7:	3f          	.byte	0x3f
+400804c8:	000000        	ill
+400804cb:	003840        	lsi	f4, a8, 0
+400804ce:	3ffb      	addi.n	a3, a15, 15
+
+400804d0 <_reset>:
+400804d0:	004136        	entry	a1, 32
+400804d3:	fffa81        	l32r	a8, 400804bc <soc_init+0x88> (3ffb0038 <_ebss>)
+400804d6:	fff891        	l32r	a9, 400804b8 <soc_init+0x84> (3ffb0000 <s_brk>)
+400804d9:	0989      	s32i.n	a8, a9, 0
+400804db:	fff991        	l32r	a9, 400804c0 <soc_init+0x8c> (3ffb0008 <s_heap_start>)
+400804de:	0989      	s32i.n	a8, a9, 0
+400804e0:	fff981        	l32r	a8, 400804c4 <soc_init+0x90> (3ffb0004 <s_heap_end>)
+400804e3:	fff991        	l32r	a9, 400804c8 <soc_init+0x94> (40000000 <_eram>)
+400804e6:	0899      	s32i.n	a9, a8, 0
+400804e8:	fff381        	l32r	a8, 400804b4 <soc_init+0x80> (3ffb0000 <s_brk>)
+400804eb:	000206        	j	400804f7 <_reset+0x27>
+400804ee:	00a092        	movi	a9, 0
+400804f1:	004892        	s8i	a9, a8, 0
+400804f4:	01c882        	addi	a8, a8, 1
+400804f7:	fff591        	l32r	a9, 400804cc <soc_init+0x98> (3ffb0038 <_ebss>)
+400804fa:	f03897        	bltu	a8, a9, 400804ee <_reset+0x1e>
+400804fd:	fff365        	call8	40080434 <soc_init>
+40080500:	0000e5        	call8	40080510 <main>
+40080503:	ffff06        	j	40080503 <_reset+0x33>
+40080506:	100000        	and	a0, a0, a0
+40080509:	3ffb00        	f64cmph	a15, a11, a0, 3
+4008050c:	000c      	movi.n	a0, 0
+4008050e:	3ffb      	addi.n	a3, a15, 15
+
+40080510 <main>:
+40080510:	004136        	entry	a1, 32
+40080513:	080c      	movi.n	a8, 0
+40080515:	000446        	j	4008052a <main+0x1a>
+40080518:	09a0a2        	movi	a10, 9
+4008051b:	c0aa80        	sub	a10, a10, a8
+4008051e:	fffa91        	l32r	a9, 40080508 <_reset+0x38> (3ffb0010 <arr>)
+40080521:	a09890        	addx4	a9, a8, a9
+40080524:	0069a2        	s32i	a10, a9, 0
+40080527:	01c882        	addi	a8, a8, 1
+4008052a:	990c      	movi.n	a9, 9
+4008052c:	e8a987        	bge	a9, a8, 40080518 <main+0x8>
+4008052f:	fff671        	l32r	a7, 40080508 <_reset+0x38> (3ffb0010 <arr>)
+40080532:	ab0c      	movi.n	a11, 10
+40080534:	07ad      	mov.n	a10, a7
+40080536:	000165        	call8	4008054c <bubbleSort>
+40080539:	3788      	l32i.n	a8, a7, 12
+4008053b:	093866        	bnei	a8, 3, 40080548 <main+0x38>
+4008053e:	fff381        	l32r	a8, 4008050c <_reset+0x3c> (3ffb000c <test_var>)
+40080541:	190c      	movi.n	a9, 1
+40080543:	0020c0        	memw
+40080546:	0899      	s32i.n	a9, a8, 0
+40080548:	ffff06        	j	40080548 <main+0x38>
+	...
+
+4008054c <bubbleSort>:
+4008054c:	004136        	entry	a1, 32
+4008054f:	02dd      	mov.n	a13, a2
+40080551:	0e0c      	movi.n	a14, 0
+40080553:	000ac6        	j	40080582 <bubbleSort+0x36>
+40080556:	d00000        	subx2	a0, a0, a0
+40080559:	a0b8      	l32i.n	a11, a0, 40
+4008055b:	0ba8      	l32i.n	a10, a11, 0
+4008055d:	981b      	addi.n	a9, a8, 1
+4008055f:	a099d0        	addx4	a9, a9, a13
+40080562:	09c8      	l32i.n	a12, a9, 0
+40080564:	05aca7        	bge	a12, a10, 4008056d <bubbleSort+0x21>
+40080567:	0bc9      	s32i.n	a12, a11, 0
+40080569:	09a9      	s32i.n	a10, a9, 0
+4008056b:	1f0c      	movi.n	a15, 1
+4008056d:	881b      	addi.n	a8, a8, 1
+4008056f:	0000c6        	j	40080576 <bubbleSort+0x2a>
+40080572:	080c      	movi.n	a8, 0
+40080574:	08fd      	mov.n	a15, a8
+40080576:	c093e0        	sub	a9, a3, a14
+40080579:	990b      	addi.n	a9, a9, -1
+4008057b:	d92897        	blt	a8, a9, 40080558 <bubbleSort+0xc>
+4008057e:	6f8c      	beqz.n	a15, 40080588 <bubbleSort+0x3c>
+40080580:	ee1b      	addi.n	a14, a14, 1
+40080582:	ffc382        	addi	a8, a3, -1
+40080585:	e92e87        	blt	a14, a8, 40080572 <bubbleSort+0x26>
+40080588:	f01d      	retw.n

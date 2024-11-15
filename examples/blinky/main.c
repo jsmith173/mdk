@@ -1,17 +1,48 @@
 #include <mdk.h>
 
-static int led_pin = LED1;  // To override: make EXTRA_CFLAGS=-DLED1=5
-static int led_state = 0;
+// Array ordering routine
+void bubbleSort(int* arr, int n)
+{
+	bool swapped;
+	int tmp;
 
-int main(void) {
-  gpio_output(led_pin);
+	for (int i = 0; i < n - 1; i++) {
+		swapped = false;
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				tmp = arr[j]; arr[j] = arr[j+1]; arr[j+1] = tmp;
+				swapped = true;
+			}
+		}
 
-  for (;;) {
-    printf("LED: %d\n", led_state);  // Print current state to console
-    gpio_write(led_pin, led_state);  // Blink an LED
-    led_state = !led_state;          // Toggle state
-    delay_ms(500);                   // Delay a bit
+		// If no two elements were swapped, then break
+		if (!swapped)
+			break;
+	}
+}
+
+// test array to sort
+#define N 10
+int arr[N];
+
+volatile int test_var = 0;
+
+
+int main(void) 
+{
+
+  for (int i=0; i<N; i++) arr[i]=N-1-i;
+
+  bubbleSort(arr, N);
+
+  // After the array sort we should have arr[3] = 3
+  if (arr[3] == 3) {
+   // We can stop here   
+   test_var = 1; // just to emit code, compiler will not optimize out
   }
 
+
+  while (1) ;
+  
   return 0;
 }

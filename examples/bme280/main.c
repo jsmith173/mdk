@@ -53,7 +53,7 @@ int main(void) {
   write8(&bme280, 0xf4, (1 << 5) | 3);  // REG_CONFIG, MODE_NORMAL
 
   for (;;) {
-    printf("Chip ID: %d, expecting 96\n", readn(&bme280, 0xd0, 1));
+    //printf("Chip ID: %d, expecting 96\n", readn(&bme280, 0xd0, 1));
     int temp = read_temp(&bme280);
     printf("Temp: %d.%d\n", temp / 100, temp % 100);
     spin(9999999);

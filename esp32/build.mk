@@ -5,19 +5,21 @@ ESPUTIL     ?= $(MDK)/esputil/esputil
 CFLAGS      ?= -W -Wall -Wextra -Werror -Wundef -Wshadow -pedantic \
                -Wdouble-promotion -fno-common -Wconversion \
                -mlongcalls -mtext-section-literals \
-               -Os -ffunction-sections -fdata-sections \
+               -Og -ffunction-sections -fdata-sections \
                -I. -I$(MDK)/$(ARCH) $(EXTRA_CFLAGS)
 LINKFLAGS   ?= -T$(MDK)/$(ARCH)/link.ld -nostdlib -nostartfiles -Wl,--gc-sections $(EXTRA_LINKFLAGS)
 CWD         ?= $(realpath $(CURDIR))
 FLASH_ADDR  ?= 0x1000  # 2nd stage bootloader flash offset
-DOCKER      ?= docker run -it --rm -v $(CWD):$(CWD) -v $(MDK):$(MDK) -w $(CWD) espressif/idf
-TOOLCHAIN   ?= $(DOCKER) xtensa-esp32-elf
+TOOLCHAIN   ?= c:/Espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32-elf
 SRCS        ?= $(MDK)/$(ARCH)/boot.c $(SOURCES)
 
-build: $(PROG).bin
+build: $(PROG).elf
 
 $(PROG).elf: $(SRCS)
 	$(TOOLCHAIN)-gcc  $(CFLAGS) $(SRCS) $(LINKFLAGS) -o $@
+	$(TOOLCHAIN)-objdump -S $(PROG).elf > $(PROG).elf.list
+	$(TOOLCHAIN)-readelf -l $(PROG).elf > $(PROG).readelf1.txt
+	$(TOOLCHAIN)-readelf -S $(PROG).elf > $(PROG).readelf2.txt
 #	$(TOOLCHAIN)-size $@
 
 $(PROG).bin: $(PROG).elf $(ESPUTIL)
